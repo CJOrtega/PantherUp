@@ -1,13 +1,14 @@
-package com.panthers.pantherup;
+package com.pantherup.pantherup_backend;
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PantherUpApplication {
+public class PantherupBackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PantherUpApplication.class, args);
+		SpringApplication.run(PantherupBackendApplication.class, args);
 	}
 
 }
