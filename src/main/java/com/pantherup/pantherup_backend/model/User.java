@@ -1,11 +1,9 @@
 package com.pantherup.pantherup_backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity // marks this class as a table in the database
+@Table(name = "Users")
 public class User {
 
     @Id // primary key

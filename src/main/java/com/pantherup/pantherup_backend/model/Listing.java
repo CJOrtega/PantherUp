@@ -1,5 +1,6 @@
 package com.pantherup.pantherup_backend.model;
 
+import com.pantherup.pantherup_backend.config.Status;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
