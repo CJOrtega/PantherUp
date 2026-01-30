@@ -5,17 +5,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Entity
+@Setter
+@Getter
 public class Listing {
     @Id
     @GeneratedValue
     private Long listingId;
     @JoinColumn
     private Long userId;
-    Integer price;
+    Double price;
     String listingTitle;
     String listingDescription;
     String listingImagesId;
