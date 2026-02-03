@@ -1,29 +1,28 @@
 package com.pantherup.pantherup_backend.model;
 
 import com.pantherup.pantherup_backend.config.Status;
+
+import jakarta.persistence.*;
+import lombok.Data;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 import java.time.LocalDate;
 
+@Data
 @Entity
-@Setter
-@Getter
 public class Listing {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long listingId;
-    @JoinColumn
     private Long userId;
     Double price;
     String listingTitle;
     String listingDescription;
     String listingImagesId;
+    @Enumerated(EnumType.STRING)
     Status status;
     LocalDate listingDate;
 

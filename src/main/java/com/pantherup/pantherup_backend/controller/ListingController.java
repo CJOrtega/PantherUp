@@ -1,39 +1,55 @@
 package com.pantherup.pantherup_backend.controller;
 
 import com.pantherup.pantherup_backend.model.Listing;
-import com.pantherup.pantherup_backend.service.ListingService;
-import lombok.RequiredArgsConstructor;
+import com.pantherup.pantherup_backend.repository.ListingRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/api")
-@RequiredArgsConstructor
+@RequestMapping("/api/listing")
 public class ListingController {
-    /**
-     * POST   /api/listings
-     * GET    /api/listings
-     * GET    /api/listings/{listingId}
-     * PUT    /api/listings/{listingId}
-     * DELETE /api/listings/{listingId}
-     * --------------------------------------------
-     * Purpose:
-     * Create a listing
-     * Retrieve listings
-     * Retrieve a single listing
-     * Update an existing listing
-     * Remove a listing
-     */
+    private final ListingRepository listingRepository;
 
-    private final ListingService listingService;
+    public ListingController(ListingRepository listingRepository) {
+        this.listingRepository = listingRepository;
+    }
 
-    @PostMapping("/listings")
-    public Listing createListing(@RequestBody Listing listing) {
-        Listing listingCreated = listingService.createListing(listing);
-        return listingCreated;
+    @GetMapping("")
+    public List<Listing> listAll() {
+        return listingRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Listing findById(@PathVariable Long id) {
+        return listingRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Listing not found"));
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("")
+    public void create(@RequestBody Listing listing) {
+        listingRepository.save(listing);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/{id}")
+    public void update(@PathVariable Long id, @RequestBody Listing listing) {
+        if (!listingRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Listing not found");
+        }
+        listingRepository.save(listing);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        if (!listingRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Listing not found");
+        }
+        listingRepository.deleteById(id);
     }
 }
