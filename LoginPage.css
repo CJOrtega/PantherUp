@@ -1,0 +1,111 @@
+.wrapper{
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+.wrapper h1 {
+    font-size: 38.1px;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.wrapper .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: #d7bc8c;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 30px;
+    font-size: 16px;
+    padding: 20px 45px 20px 20px;
+    margin-top: 30px;
+}
+
+.input-box input::placeholder{
+    color: black;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 20px;
+    margin-top: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+}
+
+.wrapper button{
+    width: 30%;
+    height: 45px;
+    text-align: center;
+    margin-top: 30px;
+    background: linear-gradient(180deg, #888888, #000000);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-family: "Arial Rounded MT Bold";
+    font-size: 20px;
+    margin-left: 145px;
+    color: white;
+}
+
+.wrapper2{
+    width: 500px;
+    height: 500px;
+    background-color: #091f3f;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+.wrapper2 h1 {
+    font-size: 86.4px;
+    color: #091f3f;
+    text-align: center;
+    font-family: Anton;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #ffd21f;
+    text-stroke-width: 0.5px;
+}
+
+.wrapper2 h2 {
+    font-size: 49.9px;
+    color: #fff;
+    text-align: center;
+    margin-top: -30px;
+    font-family: Anton;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #ffd21f;
+    text-stroke-width: 0.5px;
+}
+
+.wrapper2 h4 {
+    font-size: 25.1px;
+    color: #fff;
+    text-align: center;
+    margin-top: 30px;
+    font-family:"BBH Bogle", sans-serif;;
+}
+
+.bluebox {
+    display: flex;
+    justify-content: center;   /* center horizontally */
+    align-items: center;       /* center vertically */
+    height: 100vh;             /* full screen height */
+    gap: 40px;                 /* space between boxes */
+}
+
+
+
+
