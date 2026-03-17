@@ -28,12 +28,11 @@ public class JwtUtils {
     @Value("${spring.app.jwtSecret}")
     private String jwtSecret;
 
-    @Value("${spring.app.jwtExpirationInMs}")
-    private long jwtExpirationMs;
-
     @Value("${spring.ecom.app.jwtCookieName}")
     private String jwtCookie;
 
+    @Value("${spring.app.jwtExpirationInMs}")
+    private int jwtExpirationMs;
     //Getting JWT from header
 //    public String getJWTFromHeader(HttpServletRequest request) {
 //        String bearerToken = request.getHeader("Authorization");
@@ -59,7 +58,9 @@ public class JwtUtils {
         ResponseCookie cookie = ResponseCookie.from(jwtCookie, jwt)
                 .path("/api")
                 .maxAge(24*60*60)
-                .httpOnly(false)
+                .httpOnly(true)
+                .secure(true)
+                .sameSite("Strict")
                 .build();
 
         return cookie;
@@ -68,6 +69,9 @@ public class JwtUtils {
     public ResponseCookie getCleanJwtCookie() {
         ResponseCookie cookie = ResponseCookie.from(jwtCookie, null)
                 .path("/api")
+                .maxAge(0)
+                .httpOnly(true)
+                .secure(true)
                 .build();
 
         return cookie;
