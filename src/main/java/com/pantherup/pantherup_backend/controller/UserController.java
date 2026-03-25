@@ -19,11 +19,12 @@ public class UserController {
     }
 
     //Create new user
-    @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user){
-        User createdUser = userService.createUser(user);
-        return  ResponseEntity.ok(createdUser);
-    }
+    //NO LONGER BEING USED, SIGN UP REQUESTS GO THROUGH AuthController
+//    @PostMapping
+//    public ResponseEntity<User> createUser(@RequestBody User user){
+//        User createdUser = userService.createUser(user);
+//        return  ResponseEntity.ok(createdUser);
+//    }
 
     //Get all users
     @GetMapping("/{id}")

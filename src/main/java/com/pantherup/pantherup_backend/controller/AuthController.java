@@ -20,6 +20,7 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+    @Autowired
     private JwtUtils jwtUtils;
 
     //accept a signup request

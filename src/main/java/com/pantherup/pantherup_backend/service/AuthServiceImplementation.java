@@ -49,6 +49,9 @@ public class AuthServiceImplementation implements AuthService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
+        if  (userDetails == null) {
+            throw new RuntimeException("Invalid username or password");
+        }
         return jwtUtils.generateJwtCookie(userDetails);
     }
 }
