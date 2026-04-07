@@ -16,4 +16,7 @@ public class Message {
     LocalDateTime date = LocalDateTime.now();
     String message;
     private Long senderId;
+    @ManyToOne
+    @JoinColumn(name = "conversation_id")
+    private Conversation conversation;
 }
